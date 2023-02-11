@@ -4,8 +4,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -27,27 +30,39 @@ public class SuperheroeDaoTest {
 	
 	@Test
 	public void test_findok() {
+		Optional<Superheroe> superheroe = Optional.of(new Superheroe(1,"heroe ejemplo"));
+		when(superheroeRepository.findById(1)).thenReturn(superheroe);
 		Superheroe supertest = superheroeDao.findSuperheroeById(1);
 		assertEquals(supertest.getNombre(), "heroe ejemplo");
 	}
 	
 	@Test
 	public void test_findAllok() {
-		List<Superheroe> superheroestest = superheroeDao.findAllSuperheroe();
-		assertEquals(superheroestest.size(), 3);
+		ArrayList<Superheroe> superheroestest = new ArrayList<Superheroe>();
+		superheroestest.add(new Superheroe(1,"heroe1"));
+		superheroestest.add(new Superheroe(2,"heroe2"));
+		superheroestest.add(new Superheroe(3,"heroe3"));
+		when(superheroeRepository.findAll()).thenReturn(superheroestest);
+		List<Superheroe> superheroes = superheroeDao.findAllSuperheroe();
+		assertEquals(superheroes.size(), 3);
 	}
 	
 	@Test
 	public void test_findContainsok() {
-		List<Superheroe> superheroestest = superheroeDao.findSuperheroeContains("man");
-		assertEquals(superheroestest.size(),2);
-		assertEquals(superheroestest.get(0).getNombre(),"Spiderman");
+
+		ArrayList<Superheroe> superheroestest = new ArrayList<Superheroe>();
+		superheroestest.add(new Superheroe(1,"Spiderman"));
+		superheroestest.add(new Superheroe(2,"Manin"));
+		when(superheroeRepository.findByNombreContains("man")).thenReturn(superheroestest);
+		List<Superheroe> superheroes = superheroeDao.findSuperheroeContains("man");
+		assertEquals(superheroes.size(),2);
+		assertEquals(superheroes.get(0).getNombre(),"Spiderman");
 	}
 	
 	@Test
 	public void test_deleteok() {
 		superheroeDao.deleteSuperheroe(1);
-		verify(superheroeRepository).delete(any());
+		verify(superheroeRepository).deleteById(any());
 	}
 	
 	@Test
