@@ -14,20 +14,20 @@ import prueba.tecnica.superheroe.model.Superheroe;
 @RequestMapping("/superheroe")
 public interface SuperheroeControllerInterface {
 
-	@GetMapping(path = "/")
+	@GetMapping
 	public List<Superheroe> getAllSuperheroe();
 	
 	@GetMapping(path = "/{id}")
 	public Superheroe getSuperheroe(@PathVariable int id);
 	
-	@GetMapping(path= "/", params = "nombre")
+	@GetMapping(params = "nombre")
 	public List<Superheroe> getSuperheroeByName(@RequestParam("nombre") String nombre);
 	
-	@DeleteMapping
+	@DeleteMapping(path = "/{id}")
 	public void deleteSuperheroe(@PathVariable int id);
 	
-	@PatchMapping
-	public void patchSuperheroe(@PathVariable int id,
+	@PatchMapping(path = "/{id}")
+	public Superheroe patchSuperheroe(@PathVariable int id,
 				@RequestParam("nombre") String nombre);
 	
 	

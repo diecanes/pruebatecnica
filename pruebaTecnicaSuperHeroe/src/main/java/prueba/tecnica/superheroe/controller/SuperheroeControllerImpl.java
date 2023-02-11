@@ -21,26 +21,22 @@ public class SuperheroeControllerImpl implements SuperheroeControllerInterface {
 
 	@Override
 	public Superheroe getSuperheroe(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return superheroeService.getSuperheroe(id);
 	}
 
 	@Override
 	public List<Superheroe> getSuperheroeByName(String nombre) {
-		// TODO Auto-generated method stub
-		return null;
+		return superheroeService.getSuperheroes(nombre);
 	}
 
 	@Override
 	public void deleteSuperheroe(int id) {
-		// TODO Auto-generated method stub
-		
+		superheroeService.deleteSuperheroe(id);	
 	}
 
 	@Override
-	public void patchSuperheroe(int id, String nombre) {
-		// TODO Auto-generated method stub
-		
+	public Superheroe patchSuperheroe(int id, String nombre) {
+		return superheroeService.modifySuperheroe(id, nombre);	
 	}
 
 }
