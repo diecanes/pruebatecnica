@@ -49,7 +49,6 @@ public class SuperheroeDaoTest {
 	
 	@Test
 	public void test_findContainsok() {
-
 		ArrayList<Superheroe> superheroestest = new ArrayList<Superheroe>();
 		superheroestest.add(new Superheroe(1,"Spiderman"));
 		superheroestest.add(new Superheroe(2,"Manin"));

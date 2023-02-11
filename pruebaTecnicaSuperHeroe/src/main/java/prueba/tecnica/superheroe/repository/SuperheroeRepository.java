@@ -12,6 +12,6 @@ import prueba.tecnica.superheroe.model.Superheroe;
 @Repository
 public interface SuperheroeRepository extends JpaRepository<Superheroe, Integer> {
 
-	@Query("Select * from superheroe s where lower(s.nombre) like %:nombre%")
+	@Query("Select s from Superheroe s where lower(s.nombre) like %:nombre%")
 	public List<Superheroe> findByNombreContains(@Param("nombre") String nombre);
 }

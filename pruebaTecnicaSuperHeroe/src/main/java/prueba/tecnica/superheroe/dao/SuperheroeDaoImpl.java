@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import prueba.tecnica.superheroe.model.Superheroe;
 import prueba.tecnica.superheroe.repository.SuperheroeRepository;
 
+@Service
 public class SuperheroeDaoImpl implements SuperheroeDao {
 
 	@Autowired
