@@ -16,32 +16,32 @@ public class SuperheroeServiceImpl implements SuperheroeServiceInterface {
 	
 	@Override
 	public List<Superheroe> getSuperheroes() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Superheroe> superheroes = superheroeDao.findAllSuperheroe();
+		return superheroes;
 	}
 
 	@Override
 	public List<Superheroe> getSuperheroes(String nombre) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Superheroe> superheroes = superheroeDao.findSuperheroeContains(nombre.toLowerCase());
+		return superheroes;
 	}
 
 	@Override
 	public Superheroe getSuperheroe(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Superheroe superheroe = superheroeDao.findSuperheroeById(id);
+		return superheroe;
 	}
 
 	@Override
 	public void deleteSuperheroe(int id) {
-		// TODO Auto-generated method stub
-		
+		superheroeDao.deleteSuperheroe(id);
 	}
 
 	@Override
 	public Superheroe modifySuperheroe(int id, String nombre) {
-		// TODO Auto-generated method stub
-		return null;
+		Superheroe superheroe = superheroeDao.findSuperheroeById(id);
+		superheroe.setNombre(nombre);
+		return superheroeDao.saveSuperheroe(superheroe);
 	}
 
 }

@@ -2,17 +2,21 @@ package prueba.tecnica.superheroe.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 import prueba.tecnica.superheroe.model.Superheroe;
+import prueba.tecnica.superheroe.service.SuperheroeServiceImpl;
 
 @RestController
 public class SuperheroeControllerImpl implements SuperheroeControllerInterface {
 
+	@Autowired
+	SuperheroeServiceImpl superheroeService;
+	
 	@Override
 	public List<Superheroe> getAllSuperheroe() {
-		// TODO Auto-generated method stub
-		return null;
+		return superheroeService.getSuperheroes();
 	}
 
 	@Override
