@@ -2,6 +2,7 @@ package prueba.tecnica.superheroe.controller;
 
 import java.util.List;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -24,9 +25,11 @@ public interface SuperheroeControllerInterface {
 	public List<Superheroe> getSuperheroeByName(@RequestParam("nombre") String nombre);
 	
 	@DeleteMapping(path = "/{id}")
+	@PreAuthorize("isAuthenticated()")
 	public void deleteSuperheroe(@PathVariable int id);
 	
 	@PatchMapping(path = "/{id}")
+	@PreAuthorize("isAuthenticated()")
 	public Superheroe patchSuperheroe(@PathVariable int id,
 				@RequestParam("nombre") String nombre);
 	
